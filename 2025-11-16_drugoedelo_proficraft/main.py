@@ -13,6 +13,7 @@ _coords = {
     "grid": (500, 310),
     "plus5": (1100, 570),
     "machine": (547, 375),
+    "esc": (915, 470),
     "trash": (800, 260),
 }  # important coordinates
 
@@ -144,6 +145,8 @@ click_button("broom")
 click_button("plus5", 20)
 prepare_game()
 sleep(0.5)
+click_button("machine")
+click_button("esc")
 for i in range(cols - 1, -1, -1):
     for j in range(rows - 1, -1, -1):
         if play(i, j):
