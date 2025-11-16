@@ -116,7 +116,6 @@ def get_breed_list(i, j, is_job):
 
 def play(i, j):
     card_color = pag.screenshot().getpixel(coords_screenshot(i, j))
-    print(coords_screenshot(i, j), card_color)
     if card_color not in good:
         return False
     is_job = (card_color == black)
