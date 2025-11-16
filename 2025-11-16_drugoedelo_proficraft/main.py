@@ -12,7 +12,7 @@ _coords = {
     "broom": (500, 270),
     "grid": (500, 310),
     "plus5": (1100, 570),
-    "corner": (547, 375),
+    "machine": (547, 375),
     "trash": (800, 260),
 }  # important coordinates
 
@@ -60,7 +60,7 @@ def prepare_game():
 
 
 def coords(i, j):
-    s_x, s_y = _coords["corner"]
+    s_x, s_y = _coords["machine"]
     return s_x + w * i, s_y + h * j
 
 
