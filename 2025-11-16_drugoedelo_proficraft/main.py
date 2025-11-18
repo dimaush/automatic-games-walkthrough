@@ -46,7 +46,7 @@ def click_button(button_name, clicks=1):
 
 
 def hide_terminal():
-    pag.click(*_coords["out"])
+    click_button("out")
 
 
 def zoom_out():
