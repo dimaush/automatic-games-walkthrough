@@ -50,6 +50,14 @@ def hide_terminal():
     click("out")
 
 
+def clean_field():
+    click("broom")
+
+
+def fill_field():
+    click("plus5", 20)
+
+
 def zoom_out():
     pag.moveTo(*_coords["zoom"])
     for _ in range(10):
@@ -60,6 +68,11 @@ def zoom_out():
 def prepare_game():
     click("grid")
     zoom_out()
+
+
+def deactivate_machine():
+    click("machine")
+    click("esc")
 
 
 def coords(i, j):
@@ -143,11 +156,10 @@ M = 5
 
 
 hide_terminal()
-click("broom")
-click("plus5", 20)
+clean_field()
+fill_field()
 prepare_game()
-click("machine")
-click("esc")
+deactivate_machine()
 for i in range(cols - 1, -1, -1):
     for j in range(rows - 1, -1, -1):
         if play(i, j):
