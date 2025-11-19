@@ -43,6 +43,7 @@ good = (craft, black, white)
 def click_button(button_name, clicks=1):
     for _ in range(clicks):
         pag.click(*_coords[button_name])
+    sleep(0.5)
 
 
 def hide_terminal():
@@ -53,6 +54,7 @@ def zoom_out():
     pag.moveTo(*_coords["zoom"])
     for _ in range(10):
         pag.scroll(-1)
+    sleep(0.5)
 
 
 def prepare_game():
@@ -144,13 +146,10 @@ hide_terminal()
 click_button("broom")
 click_button("plus5", 20)
 prepare_game()
-sleep(0.5)
 click_button("machine")
 click_button("esc")
 for i in range(cols - 1, -1, -1):
     for j in range(rows - 1, -1, -1):
         if play(i, j):
             grab(lambda: pag.moveTo(*_coords["trash"], duration=0.1))
-        sleep(0.5)
         prepare_game()
-        sleep(0.5)
