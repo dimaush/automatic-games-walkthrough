@@ -40,14 +40,14 @@ white_gold = (255, 252, 247, 255)
 good = (craft, black, white)
 
 
-def click_button(button_name, clicks=1):
+def click(place, clicks=1):
     for _ in range(clicks):
-        pag.click(*_coords[button_name])
+        pag.click(*_coords[place])
     sleep(0.5)
 
 
 def hide_terminal():
-    click_button("out")
+    click("out")
 
 
 def zoom_out():
@@ -58,7 +58,7 @@ def zoom_out():
 
 
 def prepare_game():
-    click_button("grid")
+    click("grid")
     zoom_out()
 
 
@@ -143,11 +143,11 @@ M = 5
 
 
 hide_terminal()
-click_button("broom")
-click_button("plus5", 20)
+click("broom")
+click("plus5", 20)
 prepare_game()
-click_button("machine")
-click_button("esc")
+click("machine")
+click("esc")
 for i in range(cols - 1, -1, -1):
     for j in range(rows - 1, -1, -1):
         if play(i, j):
