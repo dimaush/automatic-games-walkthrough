@@ -158,16 +158,18 @@ def play(i, j):
 # hyperparameters
 T = 0.3
 M = 5
+R = 3
 
 
 hide_terminal()
 clean_field()
 make_grid()
 deactivate_machine()
-fill_field()
-prepare_game()
-for i in range(cols - 1, -1, -1):
-    for j in range(rows - 1, -1, -1):
-        if play(i, j):
-            grab(lambda: pag.moveTo(*_coords["trash"], duration=0.1))
-        prepare_game()
+for _ in range(R):
+    fill_field()
+    prepare_game()
+    for i in range(cols - 1, -1, -1):
+        for j in range(rows - 1, -1, -1):
+            if play(i, j):
+                grab(lambda: pag.moveTo(*_coords["trash"], duration=0.1))
+            prepare_game()
