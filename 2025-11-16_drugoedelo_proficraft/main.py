@@ -13,6 +13,7 @@ _coords = {
     "grid": (500, 310),
     "plus5": (1100, 570),
     "machine": (547, 375),
+    "machine_big": (660, 330),
     "esc": (915, 470),
     "trash": (800, 260),
 }  # important coordinates
@@ -58,6 +59,10 @@ def fill_field():
     click("plus5", 20)
 
 
+def make_grid():
+    click("grid")
+
+
 def zoom_out():
     pag.moveTo(*_coords["zoom"])
     for _ in range(10):
@@ -66,12 +71,12 @@ def zoom_out():
 
 
 def prepare_game():
-    click("grid")
+    make_grid()
     zoom_out()
 
 
 def deactivate_machine():
-    click("machine")
+    click("machine_big")
     click("esc")
 
 
@@ -157,9 +162,10 @@ M = 5
 
 hide_terminal()
 clean_field()
+make_grid()
+deactivate_machine()
 fill_field()
 prepare_game()
-deactivate_machine()
 for i in range(cols - 1, -1, -1):
     for j in range(rows - 1, -1, -1):
         if play(i, j):
