@@ -73,6 +73,10 @@ def payback_period(name, level):
     return price(name, level) / income(name, level)
 
 
+def stars_exchange_coef(name, level):
+    return price(name, level) / stars(name, level)
+
+
 levels = list(map(int, input().split()))
 assert len(levels) == 8
 for i in range(8):
@@ -84,12 +88,27 @@ for i in range(8):
     )
 print()
 
-while True:
-    i_, p_ = 0, payback_period(names[0], levels[0])
-    for i in range(1, 8):
-        p = payback_period(names[i], levels[i])
-        if p < p_:
-            i_, p_ = i, p
-    levels[i_] += 1
-    print(names[i_], p_, end="")
-    input()
+print("Вы хотите оптимизировать доход (0) или очки (1)?", end=' ')
+answer = input()
+if answer == "0":
+    while True:
+        i_, p_ = 0, payback_period(names[0], levels[0])
+        for i in range(1, 8):
+            p = payback_period(names[i], levels[i])
+            if p < p_:
+                i_, p_ = i, p
+        levels[i_] += 1
+        print(names[i_], p_, end="")
+        input()
+elif answer == "1":
+    while True:
+        i_, p_ = 0, stars_exchange_coef(names[0], levels[0])
+        for i in range(1, 8):
+            p = stars_exchange_coef(names[i], levels[i])
+            if p < p_:
+                i_, p_ = i, p
+        levels[i_] += 1
+        print(names[i_], p_, end="")
+        input()
+else:
+    print("Не понял ответа, попробуйте заново")
