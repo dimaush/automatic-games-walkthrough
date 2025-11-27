@@ -97,7 +97,7 @@ while True:
     elif answer == "1":
         ratio_func = stars_exchange_coef
     else:
-        print("Не понял, попробуйте заново.")
+        print("Завершаю выполнение программы, если что - зовите снова.")
         continue
 
     i_, p_ = 0, ratio_func(names[0], levels[0])
