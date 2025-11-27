@@ -9,6 +9,7 @@ names = [
     "Пылающий инсайт",
     "Плюшки-печенюшки",
     "Водопад согласований",
+    "Непотопляемый портфель",
 ]
 
 price_coefs = {
@@ -22,6 +23,7 @@ price_coefs = {
     "Пылающий инсайт": (3724, 1.22),
     "Плюшки-печенюшки": (25000, 1.1),
     "Водопад согласований": (32500, 1.1),
+    "Непотопляемый портфель": (48750, 1.12),
 }
 
 stars_coefs = {
@@ -35,6 +37,7 @@ stars_coefs = {
     "Пылающий инсайт": (9, 5),
     "Плюшки-печенюшки": (10, 5),
     "Водопад согласований": (15, 5),
+    "Непотопляемый портфель": (20, 7),
 }
 
 income_coefs = {
@@ -46,8 +49,9 @@ income_coefs = {
     "Генератор смыслов": 18,
     "Флешка-факел": 36,
     "Пылающий инсайт": 72,
-    "Плюшки-печенюшки": 30,
-    "Водопад согласований": 40,
+    "Плюшки-печенюшки": (220, 8),
+    "Водопад согласований": (233, 10),
+    "Непотопляемый портфель": (262, 12),
 }
 
 
@@ -66,7 +70,11 @@ def stars(name, level):
 
 def income(name, level):
     a = income_coefs[name]
-    return round(a * level)
+    if isinstance(a, tuple):
+        assert len(a) == 2
+        return a[0] + a[1] * level
+    else:
+        return round(a * level)
 
 
 def payback_period(name, level):
@@ -96,8 +104,11 @@ while True:
         ratio_func = payback_period
     elif answer == "1":
         ratio_func = stars_exchange_coef
-    else:
+    elif answer == "q":
         print("Завершаю выполнение программы, если что - зовите снова.")
+        break
+    else:
+        print("Не понял ответа, попробуйте ещё раз.")
         continue
 
     i_, p_ = 0, ratio_func(names[0], levels[0])
